@@ -1,8 +1,9 @@
 name: display hello world
 
 on:
- push:
+ push: 
   branches: main
+ workflow_dispatch: 
 
 jobs:
   demo_stages:
