@@ -13,7 +13,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
 
-      - name: print hello world
+      - name: print hello world 
         run: echo "hello world"
           
    
