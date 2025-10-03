@@ -7,7 +7,7 @@ on:
 jobs:
   build-and-deploy:
     # 👇 Run this job on your EC2 self-hosted runner
-    runs-on: [action-runner]
+    runs-on: [self-hosted, Linux, X64]
 
     env:
       BACKEND_IMAGE: shamkumbhar47/backend:githubactionb2
