@@ -12,7 +12,7 @@ jobs:
 
     env:
       BACKEND_IMAGE: shamkumbhar47/backend:githubaction2
-      FRONTEND_IMAGE: tejas2506/frontend:githubaction2
+      FRONTEND_IMAGE: shamkumbhar47/frontend:githubaction2
         
     steps:
       # ===============================
