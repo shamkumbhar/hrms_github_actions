@@ -87,6 +87,6 @@ jobs:
       - name: Deploy using Docker Compose
         run: |
           docker-compose down --volumes --remove-orphans
-          docker system prune -af --volumes
+          docker system prune -af --volumes 
 		  docker-compose down
 		  docker-compose up -d
