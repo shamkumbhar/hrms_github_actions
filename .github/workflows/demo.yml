@@ -6,13 +6,12 @@ on:
 
 jobs:
   build-and-deploy:
-    # 👇 Run this job on your EC2 self-hosted runner
+    # Run this job on your EC2 self-hosted runner
     runs-on: [self-hosted, Linux, X64]
- 
 
     env:
-      BACKEND_IMAGE: shamkumbhar47/backend:githubaction2
-      FRONTEND_IMAGE: shamkumbhar47/frontend:githubaction2
+      BACKEND_IMAGE: shamkumbhar47/backend:githubaction3
+      FRONTEND_IMAGE: shamkumbhar47/frontend:githubaction3
         
     steps:
       # ===============================
@@ -33,7 +32,7 @@ jobs:
       - name: Build Backend with Maven
         working-directory: Backend_hrms
         run: mvn clean package -DskipTests
- 
+
       # ===============================
       # Build Backend Docker Image
       # ===============================
@@ -41,10 +40,8 @@ jobs:
         working-directory: Backend_hrms
         run: docker build -t $BACKEND_IMAGE .
 
-
- 
-        # ===============================
-      # Setup Node for Frontend
+      # ===============================
+      # Setup Node.js for Frontend
       # ===============================
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -65,7 +62,7 @@ jobs:
         working-directory: frontend
         run: docker build -t $FRONTEND_IMAGE .
 
-      # =============================== 
+      # ===============================
       # Push Docker Images
       # ===============================
       - name: Login to Docker Hub
@@ -79,14 +76,11 @@ jobs:
           docker push $BACKEND_IMAGE
           docker push $FRONTEND_IMAGE
 
-
-    
       # ===============================
       # Deploy with Docker Compose
       # ===============================
       - name: Deploy using Docker Compose
         run: |
           docker-compose down --volumes --remove-orphans
-          docker system prune -af --volumes 
-		  docker-compose down
-		  docker-compose up -d
+          docker system prune -af --volumes
+          docker-compose up -d
