@@ -59,7 +59,7 @@ jobs:
   # ======================================
   push-images:
     runs-on: [self-hosted, Linux, X64]
-    needs: [build-backend, build-frontend]   # wait for both builds
+    needs: [build-backend]   # wait for both builds
 
     steps:
       
