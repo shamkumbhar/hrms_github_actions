@@ -62,7 +62,7 @@ jobs:
           npx ng build --configuration production --no-prerender
 
       - name: Build Frontend Docker Image
-        working-directory: Frontend
+        working-directory: frontend
         run: docker build -t $FRONTEND_IMAGE .
 
       # =============================== 
