@@ -62,4 +62,4 @@ jobs:
         run: |
           docker-compose down --volumes --remove-orphans || true
           docker system prune -af --volumes
-          docker-compose up -data-sou
+          docker-compose up -d
