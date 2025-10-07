@@ -54,13 +54,7 @@ jobs:
           docker push $BACKEND_IMAGE
 
 
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
-          
-
+    
       # ===============================
       # Deploy with Docker Compose
       # ===============================
