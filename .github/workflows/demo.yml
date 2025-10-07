@@ -34,15 +34,7 @@ jobs:
         working-directory: Backend_hrms
         run: docker build -t ${{ env.BACKEND_IMAGE }} .
 
-      - name: Save Backend Docker Image as Artifact
-        run: docker save ${{ env.BACKEND_IMAGE }} -o backend.tar
-
-      - name: Upload Backend Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: backend-image
-          path: backend.tar
-
+  
   # ======================================
   # 2️⃣ Frontend Build Job
   # ======================================
@@ -58,25 +50,9 @@ jobs:
         with:
           node-version: 18
 
-      - name: Build Frontend (Angular)
-        working-directory: frontend
-        run: |
-          rm -rf node_modules package-lock.json
-          npm install
-          npx ng build --configuration production --no-prerender
-
       - name: Build Frontend Docker Image
         working-directory: frontend
         run: docker build -t ${{ env.FRONTEND_IMAGE }} .
-
-      - name: Save Frontend Docker Image as Artifact
-        run: docker save ${{ env.FRONTEND_IMAGE }} -o frontend.tar
-
-      - name: Upload Frontend Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: frontend-image
-          path: frontend.tar
 
   # ======================================
   # 3️⃣ Push Docker Images Job
@@ -86,18 +62,7 @@ jobs:
     needs: [build-backend, build-frontend]   # wait for both builds
 
     steps:
-      - name: Download Backend Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: backend-image
-          path: .
-
-      - name: Download Frontend Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: frontend-image
-          path: .
-
+      
       - name: Load Docker Images
         run: |
           docker load -i backend.tar
