@@ -5,8 +5,8 @@ on:
     branches: [ "main" ]
 
 env:
-  BACKEND_IMAGE: shamkumbhar47/backend:githubaction3
-  FRONTEND_IMAGE: shamkumbhar47/frontend:githubaction3
+  BACKEND_IMAGE: shamkumbhar47/backend:hrmsgitaction
+  FRONTEND_IMAGE: shamkumbhar47/frontend:hrmsgitaction
 
 jobs:
 
