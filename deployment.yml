@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: shamkumbhar47/frontend:hrmstej04
+          image: shamkumbhar47/frontend:hrmsgitaction
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: shamkumbhar47/backend:hrmstej04
+          image: shamkumbhar47/backend:hrmsgitaction
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
