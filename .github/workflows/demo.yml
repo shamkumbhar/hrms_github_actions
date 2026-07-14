@@ -1,4 +1,4 @@
-name: HRMS CI/CD Pipeline
+name: HRMS CI/CD Pipeline new
 
 on:
   push:
